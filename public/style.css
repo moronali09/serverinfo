@@ -1,60 +1,58 @@
 body {
   margin: 0;
   height: 100vh;
-  background: #f9f9f9;
+  background: #000;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  color: #333;
-  font-family: sans-serif;
+  color: #33ff33;
+  font-family: monospace;
 }
 .name {
   font-family: 'VT323', monospace;
   font-size: 2.5rem;
-  color: #444;
+  color: #33ff33;
   margin-bottom: 1rem;
 }
 .terminal {
-  background: #fff;
-  border: 2px solid #ccc;
+  background: #000;
+  border: 2px solid #33ff33;
   border-radius: 4px;
   width: 90%;
   max-width: 600px;
 }
 .header {
   padding: 8px;
-  background: #eaeaea;
-  border-bottom: 1px solid #ccc;
-  font-family: monospace;
-  color: #555;
+  background: #111;
+  border-bottom: 1px solid #33ff33;
+  color: #33ff33;
 }
 .body {
   padding: 8px;
 }
 .input {
   width: calc(100% - 80px);
-  background: #fff;
+  background: #000;
   border: none;
-  border-bottom: 1px solid #ccc;
-  color: #333;
+  border-bottom: 1px solid #33ff33;
+  color: #33ff33;
   padding: 4px;
   margin-right: 8px;
-  font-family: monospace;
 }
 .input:focus { outline: none; }
 button {
-  background: #fff;
-  border: 1px solid #ccc;
-  color: #333;
+  background: #000;
+  border: 1px solid #33ff33;
+  color: #33ff33;
   padding: 4px 8px;
   cursor: pointer;
-  font-family: monospace;
 }
 button:hover {
-  background: #f0f0f0;
+  background: #33ff33;
+  color: #000;
 }
 #output {
   margin-top: 12px;
-  font-family: monospace;
+  color: #33ff33;
 }
