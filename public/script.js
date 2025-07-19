@@ -1,19 +1,26 @@
-const checkBtn = document.getElementById('check');
-const hostInput = document.getElementById('host');
-const output = document.getElementById('output');
-checkBtn.addEventListener('click', async () => {
-  const value = hostInput.value.trim(); if (!value) return;
-  const [host, port] = value.split(':');
-  output.textContent = 'Querying...';
+document.getElementById('check').addEventListener('click', async () => {
+  const hostInput = document.getElementById('host');
+  const output = document.getElementById('output');
+  const [host, port = 25565] = hostInput.value.split(':');
+
+  output.textContent = '🔍 Checking server status...';
+
   try {
-    const res = await fetch('/api/status', {
-      method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ host, port })
-    });
+    const res = await fetch(`https://api.mcsrvstat.us/2/${host}:${port}`);
     const data = await res.json();
-    output.textContent = data.online
-      ? `Server Online\nVersion: ${data.version}\nPlayers: ${data.players}`
-      : `Server Offline or Error:\n${data.error}`;
+
+    if (!data.online) {
+      output.textContent = `❌ Server is offline.`;
+      return;
+    }
+
+    output.textContent =
+      `✅ Server is online!\n` +
+      `🧾 MOTD: ${data.motd.clean.join(' ')}\n` +
+      `👥 Players: ${data.players.online}/${data.players.max}\n` +
+      `📡 Version: ${data.version}\n` +
+      `🌐 IP: ${data.ip}:${data.port}`;
   } catch (err) {
-    output.textContent = `Error: ${err.message}`;
+    output.textContent = '⚠️ Error fetching server info.';
   }
 });
