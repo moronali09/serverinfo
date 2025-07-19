@@ -1,6 +1,6 @@
 {
   "name": "minecraft-terminal-vercel",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "dependencies": {
     "minecraft-server-util": "^5.2.0"
   }
