@@ -6,8 +6,7 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  color: #80d0ff; /* custom light blue */
-  font-family: monospace;
+  color: #111; /* custom light blue */
 }
 .name-kancha {
   position: absolute;
