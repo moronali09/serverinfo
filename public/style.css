@@ -7,51 +7,70 @@ body {
   align-items: center;
   font-family: monospace;
 }
+
 .terminal {
   backdrop-filter: blur(10px);
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(0, 0, 0, 0.5);        /* আর একটু ডার্ক ব্যাকগ্রাউন্ড */
   border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 10px;
-  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
-  width: 300px;
-  padding: 16px;
-  color: #fff;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+  width: 320px;                          /* সামান্য চওড়া */
+  padding: 20px;
+  color: #f0f0f0;                        /* হালকা গ্রে রঙ */
 }
+
 .header {
   padding-bottom: 8px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-  margin-bottom: 10px;
-  font-size: 14px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+  margin-bottom: 12px;
+  font-size: 16px;                       /* বড় ফন্ট */
+  font-weight: bold;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.7);
 }
+
 .body {
   display: flex;
   flex-direction: column;
 }
+
 .input {
-  background: transparent;
+  background: rgba(255, 255, 255, 0.1);
   border: none;
-  border-bottom: 1px solid #ccc;
-  color: white;
-  padding: 4px;
-  margin-bottom: 8px;
+  border-bottom: 1px solid #aaa;
+  color: #fff;
+  padding: 8px;                          /* বেশি প্যাডিং */
+  margin-bottom: 12px;
+  font-size: 14px;                       /* ফন্ট সাইজ */
 }
+
+.input::placeholder {
+  color: #ccc;                           /* হালকা placeholder রঙ */
+}
+
 .input:focus {
   outline: none;
   border-bottom: 1px solid #fff;
 }
+
 button {
   background: rgba(255, 255, 255, 0.2);
-  border: 1px solid #ccc;
-  color: white;
-  padding: 6px;
+  border: 1px solid #ddd;
+  color: #fff;
+  padding: 8px 12px;
+  margin-bottom: 12px;
+  font-size: 14px;
   cursor: pointer;
   transition: background 0.3s;
 }
+
 button:hover {
   background: rgba(255, 255, 255, 0.4);
 }
+
 #output {
   margin-top: 12px;
-  font-size: 12px;
+  font-size: 13px;
+  line-height: 1.4;                      /* স্পেস বাড়িয়ে পড়তে সহজ */
   white-space: pre-wrap;
+  text-shadow: 1px 1px 1px rgba(0,0,0,0.6);
 }
