@@ -1,7 +1,7 @@
 # Serverinfo (Minecraft Status CLI for Vercel)
 
 Deployed on Vercel using Next.js API routes.
-Usage: https://your-project.vercel.app — type `check <ip>` in the CLI.
+Usage: [https://your-project.vercel.app](https://serverinfo-1rodyt3cs-moronali09s-projects.vercel.app/) — type `check <ip>` in the CLI.
 
 ## API
 GET `/api/status?server=host[:port]`
