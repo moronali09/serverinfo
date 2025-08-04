@@ -1,7 +1,16 @@
 {
-  "name": "minecraft-terminal-vercel",
-  "version": "1.0.1",
+  "name": "serverinfo",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
+  },
   "dependencies": {
-    "minecraft-server-util": "^5.2.0"
+    "axios": "^1.5.0",
+    "next": "14.x",
+    "react": "18.x",
+    "react-dom": "18.x"
   }
 }
