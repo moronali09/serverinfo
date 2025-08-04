@@ -1,0 +1,14 @@
+.cliOutput {
+  background: #1e1e1e;
+  color: #d4d4d4;
+  padding: 1rem;
+  min-height: 10rem;
+  font-family: monospace;
+}
+input {
+  font-size: 1rem;
+  padding: 0.5rem;
+}
+button {
+  margin-left: 0.5rem;
+}
