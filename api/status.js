@@ -1,17 +1,34 @@
-const util = require('minecraft-server-util');
-module.exports = async (req, res) => {
-  if (req.method !== 'POST') return res.status(405).send('Method Not Allowed');
-  const { host, port } = req.body;
-  if (!host) return res.status(400).json({ error: 'Missing host' });
-  const p = parseInt(port) || 25565;
-  try {
-    const response = await util.status(host, p);
-    return res.json({
-      online: true,
-      version: response.version.name,
-      players: `${response.players.online}/${response.players.max}`
-    });
-  } catch (e) {
-    return res.json({ online: false, error: e.message });
+import axios from "axios";
+
+const CACHE = {};
+const TTL = 1000 * 60 * 4;
+
+export default async function handler(req, res) {
+  const { server } = req.query;
+  if (!server || typeof server !== "string") {
+    return res.status(400).json({ error: "Usage: ?server=host:port" });
   }
-};
+
+  const key = server.toLowerCase();
+  const cached = CACHE[key];
+  if (cached && Date.now() - cached.ts < TTL) {
+    return res.status(200).json({ cached: true, ...cached.data });
+  }
+
+  try {
+
+    const isBedrock = key.includes(":19132");
+    const apiUrl = isBedrock
+      ? `https://api.mcsrvstat.us/3/bedrock/${encodeURIComponent(key)}`
+      : `https://api.mcsrvstat.us/3/${encodeURIComponent(key)}`;
+
+    const { data } = await axios.get(apiUrl, {
+      headers: { "User-Agent": "serverinfo-vercel/1.0" },
+    });
+
+    CACHE[key] = { ts: Date.now(), data };
+    return res.json({ cached: false, ...data });
+  } catch (err) {
+    return res.status(502).json({ error: "Failed to fetch", details: err.message });
+  }
+}
